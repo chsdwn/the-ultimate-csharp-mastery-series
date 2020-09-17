@@ -2,32 +2,20 @@
 
 namespace ultimate_csharp_mastery
 {
-    class Person
-    {
-        public int Age;
-    }
-
     class Program
     {
         static void Main(string[] args)
         {
-            var number = 1;
-            Increment(number);
-            Console.WriteLine(number); // 1
+            const int PASSWORD_LENGTH = 15;
+            var random = new Random();
 
-            var person = new Person() { Age = 20 };
-            MakeOld(person);
-            Console.WriteLine(person.Age); // 30
-        }
+            var buffer = new char[PASSWORD_LENGTH];
 
-        public static void Increment(int number)
-        {
-            number += 10;
-        }
+            for (int i = 0; i < PASSWORD_LENGTH; i++)
+                buffer[i] = (char)(random.Next(33, 126));
 
-        public static void MakeOld(Person person)
-        {
-            person.Age += 10;
+            var password = new string(buffer);
+            Console.WriteLine(password);
         }
     }
 }
