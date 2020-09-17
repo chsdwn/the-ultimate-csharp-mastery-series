@@ -2,25 +2,29 @@
 
 namespace ultimate_csharp_mastery
 {
+    enum ShippingMethod
+    {
+        RegularAirMail = 1,
+        RegisteredAirMail = 2,
+        Express = 3
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            byte number = 255;
-            Console.WriteLine($"byte number: {number}"); // 255
+            var method = ShippingMethod.Express;
+            Console.WriteLine(method); // Express
+            Console.WriteLine((int)method); // 3
 
-            ++number;
-            Console.WriteLine($"byte number + 1: {number}"); // 0
+            var methodId = 3;
+            Console.WriteLine((ShippingMethod)methodId); // Express
 
-            checked
-            {
-                byte number2 = 255;
-                Console.WriteLine($"byte number2: {number2}"); // 255
+            Console.WriteLine(method.ToString()); // Express
 
-                ++number2;
-                Console.WriteLine($"byte number2 + 1: {number2}");
-                //Unhandled exception. System.OverflowException: Arithmetic operation resulted in an overflow
-            }
+            var methodName = "Express";
+            var shippingMethod = (ShippingMethod)Enum.Parse(typeof(ShippingMethod), methodName);
+            Console.WriteLine(shippingMethod); // Express
         }
     }
 }
