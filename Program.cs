@@ -7,29 +7,31 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            // Write a program and ask the user to enter a time 
-            // value in the 24-hour time format (e.g. 19:00).
-            // A valid time should be between 00:00 and 23:59.
-            // If the time is valid, display "Ok"; otherwise, 
-            // display "Invalid Time". If the user doesn't
-            // provide any values, consider it as invalid time.
+            // Write a program and ask the user to enter a few words separated by a space.
+            // Use the words to create a variable name with PascalCase. For example, 
+            // if the user types: "number of students", display "NumberOfStudents". 
+            // Make sure that the program is not dependent on the input. So, if the user
+            // types "NUMBER OF STUDENTS", the program should still display "NumberOfStudents".
 
-            Console.Write("Enter a time: ");
+            Console.Write("Enter a few words: ");
             var input = Console.ReadLine();
+            input = input.ToLower();
 
-            if (String.IsNullOrEmpty(input) || String.IsNullOrWhiteSpace(input))
+            var words = input.Split(' ');
+
+            for (int i = 0; i < words.Length; i++)
             {
-                Console.WriteLine("Invalid Time");
-                return;
+                var word = words[i];
+                word = word[0].ToString().ToUpper() + word.Substring(1);
+                words[i] = word;
             }
 
-            var hour = Convert.ToInt32(input.Split(':')[0]);
-            var minute = Convert.ToInt32(input.Split(':')[1]);
+            var result = "";
 
-            if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59)
-                Console.WriteLine("Ok");
-            else
-                Console.WriteLine("Invalid Time");
+            foreach (var word in words)
+                result += word;
+
+            Console.WriteLine(result);
         }
     }
 }
