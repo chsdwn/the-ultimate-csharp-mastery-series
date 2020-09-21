@@ -8,10 +8,8 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var customer = new Customer(1);
-            customer.Orders.Add(new Order());
-            customer.Orders.Add(new Order());
-            Console.WriteLine(customer.Orders.Count);
+            var person = new Person(new DateTime(1990, 1, 1));
+            Console.WriteLine(person.Age);
         }
     }
 }
