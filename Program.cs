@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 
 namespace ultimate_csharp_mastery
 {
@@ -9,8 +8,32 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            Shape shape = new Text();
-            Text text = (Text)shape;
+            var stack = new Stack();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+
+            stack.Push(4);
+            stack.Push(5);
+            stack.Push(6);
+
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+
+            stack.Clear();
+
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
         }
     }
 }
