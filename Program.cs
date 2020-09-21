@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Amazon;
 
 namespace ultimate_csharp_mastery
 {
@@ -9,7 +8,7 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var customer = new Customer();
+            var car = new Car("123");
         }
     }
 }
