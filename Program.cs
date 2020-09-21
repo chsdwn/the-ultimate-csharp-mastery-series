@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Amazon;
 
 namespace ultimate_csharp_mastery
 {
@@ -8,12 +9,7 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var logger = new Logger();
-            var dbMigrator = new DbMigrator(logger);
-            dbMigrator.Migrate();
-
-            var installer = new Installer(new Logger());
-            installer.Install();
+            var customer = new Customer();
         }
     }
 }
