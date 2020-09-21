@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace ultimate_csharp_mastery
 {
@@ -7,24 +8,12 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            // Write a program and ask the user to enter an English word.
-            // Count the number of vowels (a, e, o, u, i) in the word.
-            // So, if the user enters "inadequate", the program should display 6 on the console.
+            // Write a program that reads a text file and displays the number of words.
+            var path = "./exercise9.txt";
+            var content = File.ReadAllText(path);
+            var words = content.Split(' ');
 
-            var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
-
-            Console.Write("Enter an English word: ");
-            var input = Console.ReadLine();
-            input = input.ToLower();
-
-            var result = 0;
-
-            foreach (var letter in input)
-                foreach (var vowel in vowels)
-                    if (letter.Equals(vowel))
-                        ++result;
-
-            Console.WriteLine(result);
+            Console.WriteLine(words.Length);
         }
     }
 }
