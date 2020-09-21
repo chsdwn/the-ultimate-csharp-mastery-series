@@ -8,9 +8,12 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var text = new Text();
-            text.Width = 100;
-            text.Copy();
+            var logger = new Logger();
+            var dbMigrator = new DbMigrator(logger);
+            dbMigrator.Migrate();
+
+            var installer = new Installer(new Logger());
+            installer.Install();
         }
     }
 }
