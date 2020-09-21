@@ -8,17 +8,14 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            System.Threading.Thread.Sleep(1000);
-            stopwatch.Stop();
-            Console.WriteLine(stopwatch.Duration);
-
-            stopwatch.Start();
-            System.Threading.Thread.Sleep(2000);
-            stopwatch.Stop();
-            Console.WriteLine(stopwatch.Duration);
-            stopwatch.Stop();
+            var post = new Post("title", "description", DateTime.Now);
+            post.Upvote();
+            post.Upvote();
+            post.Upvote();
+            post.Upvote();
+            post.Downvote();
+            post.Downvote();
+            Console.WriteLine(post.Vote);
         }
     }
 }
