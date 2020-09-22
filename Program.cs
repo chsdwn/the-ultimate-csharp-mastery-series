@@ -6,12 +6,14 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var books = new BookRepository().GetBooks();
+            var video = new Video { Title = "Video 1" };
+            var videoEncoder = new VideoEncoder(); // publisher
+            var mailService = new MailService(); // subscriber
+            var messageService = new MessageService(); // subscriber
 
-            var cheapBooks = books.FindAll(b => b.Price < 10);
-
-            foreach (var book in cheapBooks)
-                Console.WriteLine(book.Title + " $" + book.Price);
+            videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
+            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+            videoEncoder.Encode(video);
         }
     }
 }
