@@ -6,9 +6,18 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var number = new Nullable<int>();
-            Console.WriteLine("Has value: " + number.HasValue);
-            Console.WriteLine("Value: " + number.GetValueOrDefault());
+            var photoProcessor = new PhotoProcessor();
+            var filters = new PhotoFilters();
+            Action<Photo> filterHandler = filters.ApplyBrightness;
+            filterHandler += filters.ApplyContrast;
+            filterHandler += RemoveRedEyeFilter;
+
+            photoProcessor.Process(String.Empty, filterHandler);
+        }
+
+        static void RemoveRedEyeFilter(Photo photo)
+        {
+            Console.WriteLine("Apply RemoveRedEye");
         }
     }
 }
