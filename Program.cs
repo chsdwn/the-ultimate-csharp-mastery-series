@@ -6,9 +6,13 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var circle = new Circle();
-            circle.Draw();
-            circle.Copy();
+            var sql = new SqlConnection("sql");
+            sql.Open();
+            sql.Close();
+
+            var oracle = new OracleConnection("oracle");
+            oracle.Open();
+            oracle.Close();
         }
     }
 }
