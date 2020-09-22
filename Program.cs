@@ -6,18 +6,12 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var photoProcessor = new PhotoProcessor();
-            var filters = new PhotoFilters();
-            Action<Photo> filterHandler = filters.ApplyBrightness;
-            filterHandler += filters.ApplyContrast;
-            filterHandler += RemoveRedEyeFilter;
+            var books = new BookRepository().GetBooks();
 
-            photoProcessor.Process(String.Empty, filterHandler);
-        }
+            var cheapBooks = books.FindAll(b => b.Price < 10);
 
-        static void RemoveRedEyeFilter(Photo photo)
-        {
-            Console.WriteLine("Apply RemoveRedEye");
+            foreach (var book in cheapBooks)
+                Console.WriteLine(book.Title + " $" + book.Price);
         }
     }
 }
