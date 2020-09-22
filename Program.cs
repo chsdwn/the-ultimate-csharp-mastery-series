@@ -6,13 +6,9 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var workflow = new Workflow();
-            workflow.RegisterActivity(new Copy());
-            workflow.RegisterActivity(new Cut());
-            workflow.RegisterActivity(new Delete());
-
-            var workflowEngine = new WorkflowEngine();
-            workflowEngine.Run(workflow);
+            var number = new Nullable<int>();
+            Console.WriteLine("Has value: " + number.HasValue);
+            Console.WriteLine("Value: " + number.GetValueOrDefault());
         }
     }
 }
