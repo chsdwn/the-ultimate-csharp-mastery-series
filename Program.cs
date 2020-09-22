@@ -7,12 +7,12 @@ namespace ultimate_csharp_mastery
         static void Main(string[] args)
         {
             var sql = new SqlConnection("sql");
-            sql.Open();
-            sql.Close();
+            var sqlCommand = new DbCommand(sql, "SELECT * FROM tblSql");
+            sqlCommand.Execute();
 
             var oracle = new OracleConnection("oracle");
-            oracle.Open();
-            oracle.Close();
+            var oracleCommand = new DbCommand(oracle, "SELECT * FROM tblOracle");
+            oracleCommand.Execute();
         }
     }
 }
