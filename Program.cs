@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ultimate_csharp_mastery
 {
@@ -6,10 +7,25 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var post = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec diam at tortor imperdiet laoreet. Nulla porttitor risus nec nulla eleifend, in bibendum lectus gravida. Vivamus at nunc dui.";
-            var summary = post.Shorten(5);
+            var books = new BookRepository().GetBooks();
 
-            Console.WriteLine(summary + "...");
+            // LINQ Query Operators
+            var cheaperBooks = from b in books
+                               where b.Price < 10
+                               orderby b.Title
+                               select b;
+
+            // LINQ Extension Methods
+            var cheapBooks = books
+                .Where(b => b.Price < 10)
+                .OrderBy(b => b.Title)
+                .Select(b => b.Title);
+
+            foreach (var cheapBook in cheapBooks)
+                Console.WriteLine(cheapBook);
+
+            var book = books.SingleOrDefault(b => b.Title == "Q");
+            System.Console.WriteLine("Title: " + book?.Title);
         }
     }
 }
