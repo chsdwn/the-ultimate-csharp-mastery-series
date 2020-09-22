@@ -6,14 +6,10 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            var video = new Video { Title = "Video 1" };
-            var videoEncoder = new VideoEncoder(); // publisher
-            var mailService = new MailService(); // subscriber
-            var messageService = new MessageService(); // subscriber
+            var post = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec diam at tortor imperdiet laoreet. Nulla porttitor risus nec nulla eleifend, in bibendum lectus gravida. Vivamus at nunc dui.";
+            var summary = post.Shorten(5);
 
-            videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
-            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
-            videoEncoder.Encode(video);
+            Console.WriteLine(summary + "...");
         }
     }
 }
