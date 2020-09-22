@@ -3,18 +3,23 @@ using System.Collections.Generic;
 
 namespace ultimate_csharp_mastery
 {
-    public class Workflow
+    public class Workflow : IWorkflow
     {
-        public readonly IList<IActivity> Activities;
+        public readonly IList<IActivity> _activities;
 
         public Workflow()
         {
-            Activities = new List<IActivity>();
+            _activities = new List<IActivity>();
         }
 
         public void RegisterActivity(IActivity activity)
         {
-            Activities.Add(activity);
+            _activities.Add(activity);
+        }
+
+        public IEnumerable<IActivity> GetActivities()
+        {
+            return _activities;
         }
     }
 }
