@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ultimate_csharp_mastery
 {
@@ -6,28 +7,37 @@ namespace ultimate_csharp_mastery
     {
         static void Main(string[] args)
         {
-            object obj = "A";
-            // obj.GetHashCode();
 
-            /*
-                Reflection
-            var methodInfo = obj.GetType().GetMethod("GetHashCode");
-            methodInfo.Invoke(null, null);
-            */
+            try
+            {
+                var result = Calculator.Divide(2, 0);
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (ArithmeticException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
-            // Dynamic
-            // dynamic excelObject = "E";
-            // excelObject.Optimize();
+            try
+            {
+                var youtubeApi = new YoutubeApi();
+                youtubeApi.GetVideos("youtube");
 
-            dynamic name = "Ab";
-            Console.WriteLine(name);
-            name = 1;
-            Console.WriteLine(name);
-
-            dynamic a = 10;
-            dynamic b = 5;
-            var result = a + b;
-            Console.WriteLine(result);
+                using (var streamReader = new StreamReader(@".\dummy.zip"))
+                {
+                    var content = streamReader.ReadToEnd();
+                }
+            }
+            catch (Exception e)
+            {
+            }
         }
     }
 }
